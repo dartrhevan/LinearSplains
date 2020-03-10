@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-ScrollView {
+ApplicationWindow {
     visible: true
     width: 640
     height: 480
@@ -18,6 +18,7 @@ ScrollView {
         width: 100
         height: 30
         id: xf
+        objectName: "xf"
         placeholderText: "x"
         anchors.top: title.bottom
         anchors.topMargin: 10
@@ -30,6 +31,7 @@ ScrollView {
         height: 30
         placeholderText: "y"
         id: yf
+        objectName: "yf"
         anchors.topMargin: 10
         anchors.top: title.bottom
         anchors.left: parent.horizontalCenter
@@ -40,11 +42,10 @@ ScrollView {
         width: 150
         height: 30
         id: addBut
-        onClicked: {
-            handler.addButtonClick()
+        onClicked: handler.addButtonClick()
 
             //pointsList.a//(xf.text + " " + yf.text)
-        }
+
         text: "Добавить точку"
         anchors.top: xf.bottom
         anchors.topMargin: 10

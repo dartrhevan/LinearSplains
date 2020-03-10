@@ -18,21 +18,15 @@ int main(int argc, char ** argv)
 {
     QGuiApplication app(argc, argv);
 
-//![0]
-    QStringList dataList;
-    dataList.append("Item 14");
-    dataList.append("Item 2");
-    dataList.append("Item 3");
-    dataList.append("Item 4");
-
-    QQuickView view;
-    Handler handler(&view);
+    QQmlApplicationEngine view;
+    view.load(QUrl(QStringLiteral("qrc:/main.qml")));
     QQmlContext *ctxt = view.rootContext();
-    ctxt->setContextProperty("myModel", QVariant::fromValue(dataList));
-//![0]
+    Handler handler(view.rootObjects()[0], ctxt);
+    ctxt->setContextProperty("myModel", QVariant::fromValue(handler.getStringPoints()));
+
     ctxt->setContextProperty("handler", &handler);
-    view.setSource(QUrl("qrc:main.qml"));
-    view.show();
+    //view.setSource(QUrl("qrc:main.qml"));
+    //view.show();
 
     return app.exec();
 }
@@ -48,12 +42,9 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     QObject* root = engine.rootObjects()[0];
-    Handler handler(root);
-    engine.rootContext()->setContextProperty("handler", &handler);
-
-
-     engine.rootContext()->setContextProperty("myModel", QVariant::fromValue(dataList));
-     if (engine.rootObjects().isEmpty())
+    Handler myClass(root);
+    engine.rootContext()->setContextProperty("_myClass", &myClass);
+    if (engine.rootObjects().isEmpty())
         return -1;
 
     return app.exec();

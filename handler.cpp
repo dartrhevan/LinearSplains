@@ -1,21 +1,28 @@
 #include "handler.h"
 
-Handler::Handler(QObject *parent) : QObject(parent), viewer(parent)
+const QStringList& Handler::getStringPoints() const
 {
-    pointList.push_back(Point(0,0));
+    return stringPoints;
+}
+
+Handler::Handler(QObject *parent, QQmlContext *ctxt) : QObject(parent), ctxt(ctxt)//, viewer(parent), ctxt(parent->rootContext())
+{
+
 }
 
 void Handler::calcButtonClick()
 {
     //QListView l;
-
-    QObject* x = this->parent()->findChild<QObject*>("x");
-    QObject* y = this->parent()->findChild<QObject*>("y");
-    pointList.push_back(Point(x->property("text").toDouble(), y->property("text").toDouble()));
-
 }
 
 void Handler::addButtonClick()
 {
+    QObject* x = this->parent()->findChild<QObject*>("xf");
+    QObject* y = this->parent()->findChild<QObject*>("yf");
+    auto xv = x->property("text").toString();//.toDouble();
+    auto p = Point(xv.toDouble(), y->property("text").toDouble());
+    pointList.push_back(p);
+    stringPoints.append(x->property("text").toString() + " " + y->property("text").toString());
+    ctxt->setContextProperty("myModel", QVariant::fromValue(stringPoints));
 
 }

@@ -7,16 +7,25 @@
 #include "point.h"
 #include <QListView>
 
+#include <qqmlcontext.h>
+#include <qqml.h>
+#include <QtQuick/qquickitem.h>
+#include <QtQuick/qquickview.h>
 
 class Handler : public QObject
 {
     Q_OBJECT
     std::vector<Point> pointList;
     QObject *viewer;
-public:
-    explicit Handler(QObject *parent = nullptr);
+    QQmlContext *ctxt;
+    QStringList stringPoints = {"dsfg", "dsfdgf"};
 
-     QStringList strings = {"dsfg", "dsfdgf"};
+
+public:
+    explicit Handler(QObject *parent = nullptr, QQmlContext *ctxt = nullptr);
+
+    const QStringList& getStringPoints() const;
+
 signals:
 
 public slots:
