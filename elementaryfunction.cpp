@@ -23,7 +23,7 @@ double ElementaryFunction::getBegin() const
 double ElementaryFunction::operator()(double x) const
 {
     assert(x >= begin && x <= end);
-    return x * k + m;
+    return x * k + n;
 }
 
 ElementaryFunction::ElementaryFunction(double begin, double end, double k, double n)
@@ -33,5 +33,5 @@ ElementaryFunction::ElementaryFunction(double begin, double end, double k, doubl
 ElementaryFunction::ElementaryFunction(Point begin, Point end) : begin(begin.x), end(end.x)
 {
     k = (end.y - begin.y) / (end.x - begin.x);
-    m = (begin.y * end.x - end.y * begin.x) / (end.x - begin.x);
+    n = (begin.y * end.x - end.y * begin.x) / (end.x - begin.x);
 }

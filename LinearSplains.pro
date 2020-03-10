@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     interpolate.cpp \
     resultfunction.cpp \
-    elementaryfunction.cpp
+    elementaryfunction.cpp \
+    handler.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,4 +35,7 @@ HEADERS += \
     point.h \
     interpolate.h \
     resultfunction.h \
-    elementaryfunction.h
+    elementaryfunction.h \
+    handler.h
+
+DISTFILES +=
