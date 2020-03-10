@@ -1,11 +1,10 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
 
-ApplicationWindow {
+ScrollView {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Scroll")
     Text
     {
         text: "Линейная сплайн-интерполяция"
@@ -18,6 +17,7 @@ ApplicationWindow {
     TextField {
         width: 100
         height: 30
+        id: xf
         placeholderText: "x"
         anchors.top: title.bottom
         anchors.topMargin: 10
@@ -29,7 +29,7 @@ ApplicationWindow {
         width: 100
         height: 30
         placeholderText: "y"
-        id: te
+        id: yf
         anchors.topMargin: 10
         anchors.top: title.bottom
         anchors.left: parent.horizontalCenter
@@ -40,11 +40,17 @@ ApplicationWindow {
         width: 150
         height: 30
         id: addBut
+        onClicked: {
+            handler.addButtonClick()
+
+            //pointsList.a//(xf.text + " " + yf.text)
+        }
         text: "Добавить точку"
-        anchors.top: te.bottom
+        anchors.top: xf.bottom
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
     }
+
     Text {
         text: "Точки"
         font.bold: true
@@ -53,20 +59,24 @@ ApplicationWindow {
         anchors.topMargin: 10
         anchors.horizontalCenter: pointsList.horizontalCenter
     }
+
     ListView {
         width: parent.width / 2
-        model: 20
+        height: parent.height - y
         id: pointsList
         anchors.top: points.bottom
         anchors.topMargin: 10
-        delegate: ItemDelegate {
-            text: "Item " + (index + 1)
+        model: myModel
+        delegate: Rectangle {
+            height: 25
             width: parent.width
+            Text { text: modelData }
         }
     }
 
     ScrollView {
         width: parent.width / 2
+
         anchors.top: addBut.bottom
         anchors.topMargin: 10
         anchors.left: pointsList.right
@@ -92,6 +102,7 @@ ApplicationWindow {
             text: "Рассчитать"
             anchors.top: x.bottom
             height: 30
+            onClicked: handler.calcButtonClick()
             anchors.topMargin: 10
             anchors.bottomMargin: 10
         }
