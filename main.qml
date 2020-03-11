@@ -135,8 +135,10 @@ ApplicationWindow {
             anchors.topMargin: 10
             anchors.bottomMargin: 10
             id: res
+            objectName: "res"
             anchors.top: calcButton.bottom
-            anchors.left: resTitle.left
+            anchors.left: resTitle.right
+            anchors.leftMargin: 10
         }
         Text {
             anchors.topMargin: 10

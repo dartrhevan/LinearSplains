@@ -10,6 +10,10 @@ class ElementaryFunction
 public:
     ElementaryFunction(double begin, double end, double k, double n);
     ElementaryFunction(Point begin, Point end);
+    ElementaryFunction& operator= (ElementaryFunction&&) noexcept = default;
+    ElementaryFunction(ElementaryFunction&&) noexcept = default;
+    ElementaryFunction& operator= (const ElementaryFunction&) noexcept = default;
+    ElementaryFunction(const ElementaryFunction&) noexcept = default;
     double getN() const;
     double getK() const;
     double getEnd() const;

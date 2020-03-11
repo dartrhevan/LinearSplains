@@ -14,7 +14,7 @@ void Handler::calcButtonClick()
 {
     QObject* res = this->parent()->findChild<QObject*>("res");
     QObject* x = this->parent()->findChild<QObject*>("x");
-    res->setProperty("res", func(x->property("text").toDouble()));
+    res->setProperty("text", func(x->property("text").toDouble()));
 
 }
 
