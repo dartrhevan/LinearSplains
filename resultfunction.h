@@ -4,16 +4,24 @@
 #include "point.h"
 #include "elementaryfunction.h"
 #include <vector>
+#include <string>
 #include <algorithm>
+#include <sstream>
+#include <iomanip>
 
 class ResultFunction
 {
 
     std::vector<ElementaryFunction> splains;
-    double operator()(double x) const;
 public:
     ResultFunction();
+    double operator()(double x) const;
+    ResultFunction& operator= (ResultFunction&&) noexcept = default;
+    ResultFunction(ResultFunction&&) noexcept = default;
+    ResultFunction& operator= (const ResultFunction&) noexcept = default;
+    ResultFunction(const ResultFunction&) noexcept = default;
     void addSplain(const ElementaryFunction& splain);
+    std::string toString() const;
 };
 
 #endif // RESULTFUNCTION_H

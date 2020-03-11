@@ -30,8 +30,8 @@ ElementaryFunction::ElementaryFunction(double begin, double end, double k, doubl
     : begin(begin), end(end), k(k), n(n)
 {}
 
-ElementaryFunction::ElementaryFunction(Point begin, Point end) : begin(begin.x), end(end.x)
+ElementaryFunction::ElementaryFunction(Point begin, Point end) : begin(begin.getX()), end(end.getX())
 {
-    k = (end.y - begin.y) / (end.x - begin.x);
-    n = (begin.y * end.x - end.y * begin.x) / (end.x - begin.x);
+    k = (end.getY() - begin.getY()) / (end.getX() - begin.getX());
+    n = (begin.getY() * end.getX() - end.getY() * begin.getX()) / (end.getX() - begin.getX());
 }

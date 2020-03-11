@@ -48,9 +48,24 @@ ApplicationWindow {
 
         text: "Добавить точку"
         anchors.top: xf.bottom
+        anchors.rightMargin: 10
         anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.right: parent.horizontalCenter
     }
+
+    Button {
+        width: 150
+        height: 30
+        id: solveBut
+        onClicked: handler.solveButtonClick()
+
+        text: "Рассчитать"
+        anchors.top: xf.bottom
+        anchors.topMargin: 10
+        anchors.leftMargin: 10
+        anchors.left: parent.horizontalCenter
+    }
+
 
     Text {
         text: "Точки"
@@ -93,6 +108,7 @@ ApplicationWindow {
             height: 30
             anchors.top: funcTitle.bottom
             id: x
+            objectName: "x"
             placeholderText: "x"
             anchors.topMargin: 10
             anchors.bottomMargin: 10
@@ -125,6 +141,7 @@ ApplicationWindow {
         Text {
             anchors.topMargin: 10
             id: resFunc
+            objectName: "resFunc"
             anchors.top: res.bottom
             anchors.left: parent.left
         }

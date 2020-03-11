@@ -25,28 +25,6 @@ int main(int argc, char ** argv)
     ctxt->setContextProperty("myModel", QVariant::fromValue(handler.getStringPoints()));
 
     ctxt->setContextProperty("handler", &handler);
-    //view.setSource(QUrl("qrc:main.qml"));
-    //view.show();
 
     return app.exec();
 }
-/*
-int main(int argc, char *argv[])
-{
-#if defined(Q_OS_WIN)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
-
-    QGuiApplication app(argc, argv);
-
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-    QObject* root = engine.rootObjects()[0];
-    Handler myClass(root);
-    engine.rootContext()->setContextProperty("_myClass", &myClass);
-    if (engine.rootObjects().isEmpty())
-        return -1;
-
-    return app.exec();
-}
-*/
