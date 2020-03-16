@@ -3,10 +3,22 @@
 
 #include "resultfunction.h"
 #include "elementaryfunction.h"
-#include <vector>
+#include <set>
 #include <algorithm>
 #include "point.h"
 
-ResultFunction interpolate(const std::vector<Point>& points);
+template<class Iter>
+ResultFunction interpolate(const Iter& begin, const Iter& end)
+{
+    //std::sort(points.begin(), points.end());
+    ResultFunction res;
+    for(auto i = begin; i != end;)
+    {
+        auto lastPoint = *i;
+        i++;
+        res.addSplain(ElementaryFunction(lastPoint, *i));
+    }
+    return res;
+}
 
 #endif // INTERPOLATE_H

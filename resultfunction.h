@@ -22,6 +22,9 @@ public:
     ResultFunction(const ResultFunction&) noexcept = default;
     void addSplain(const ElementaryFunction& splain);
     std::string toString() const;
+    size_t splainsCount() const {
+        return splains.size();
+    }
 };
 
 #endif // RESULTFUNCTION_H

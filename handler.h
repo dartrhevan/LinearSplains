@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QtGui>
-#include <vector>
+#include <set>
 #include "point.h"
 #include <QListView>
 #include "interpolate.h"
@@ -12,15 +12,16 @@
 #include <QtQuick/qquickitem.h>
 #include <QtQuick/qquickview.h>
 #include "resultfunction.h"
+#include <functional>
 
 class Handler : public QObject
 {
     Q_OBJECT
-    std::vector<Point> pointList;
+    std::set<Point, std::function<bool (const Point&, const Point&)>> points;
     QObject *viewer;
     QQmlContext *ctxt;
-    QStringList stringPoints;// = {"dsfg", "dsfdgf"};
-    ResultFunction func;// = nullptr;
+    QStringList stringPoints;
+    ResultFunction func;
 
 public:
     explicit Handler(QObject *parent = nullptr, QQmlContext *ctxt = nullptr);
@@ -29,6 +30,7 @@ public:
 signals:
 
 public slots:
+    void deletePoint(const QString&);
     void calcButtonClick();
     void addButtonClick();
     void solveButtonClick();

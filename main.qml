@@ -3,8 +3,8 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
+    width: 350
+    height: 400
     Text
     {
         text: "Линейная сплайн-интерполяция"
@@ -83,11 +83,17 @@ ApplicationWindow {
         anchors.top: points.bottom
         anchors.topMargin: 10
         model: myModel
-        delegate: Rectangle {
+        delegate: ItemDelegate {
+            height: 25
+            text: modelData
+            onDoubleClicked: handler.deletePoint(modelData)
+            width: parent.width
+        }
+            /*Rectangle {
             height: 25
             width: parent.width
             Text { text: modelData }
-        }
+        }*/
     }
 
     ScrollView {

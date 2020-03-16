@@ -4,7 +4,7 @@
 #include <QStringList>
 #include "handler.h"
 #include <QQuickView>
-
+#include <QApplication>
 #include <QGuiApplication>
 #include <QStringList>
 
@@ -16,7 +16,7 @@
 
 int main(int argc, char ** argv)
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine view;
     view.load(QUrl(QStringLiteral("qrc:/main.qml")));

@@ -1,12 +1,16 @@
-#include "interpolate.h"
+/*#include "interpolate.h"
 
-
-
-ResultFunction interpolate(const std::vector<Point>& points)
+template<class Iter>
+ResultFunction interpolate(const Iter& begin, const Iter& end)
 {
     //std::sort(points.begin(), points.end());
     ResultFunction res;
-    for(int i = 1; i < points.size(); ++i)
-        res.addSplain(ElementaryFunction(points[i - 1], points[i]));
+    for(auto i = begin; i < begin != end;)
+    {
+        auto lastPoint = *i;
+        i++;
+        res.addSplain(ElementaryFunction(lastPoint, *i));
+    }
     return res;
 }
+*/
