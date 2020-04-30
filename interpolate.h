@@ -16,6 +16,8 @@ ResultFunction interpolate(const Iter& begin, const Iter& end)
     {
         auto lastPoint = *i;
         i++;
+        if(i == end)
+            break;
         res.addSplain(ElementaryFunction(lastPoint, *i));
     }
     return res;
